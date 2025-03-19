@@ -1,0 +1,44 @@
+﻿@using EmployeeMS.Models
+@model IEnumerable<Departments>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Departmet Masterlist</h2>
+
+<div class="container">
+    <div class="table-responsive">
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var dept in Model)
+                    {
+                        <tr>
+                            <td>@dept.Id</td>
+                            <td>@dept.name</td>
+                            <td>@dept.location</td>
+
+                            <td>
+                                <a href="@Url.Action("Edit", "Departments", new { area = "", Id = dept.Id})">Edit</a>
+                                <a href="@Url.Action("Delete", "Departments", new { area = "", Id = dept.Id})">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <a href="@Url.Action("InsertRecordDept", "Departments", new { area = ""})" class="btn btn-default">Add Department</a>
+</div>
+
