@@ -1,0 +1,37 @@
+﻿@using EmployeeMS.Models
+@model IEnumerable<Positions>
+@{
+    ViewBag.Title = "Position Page";
+}
+
+<h3>Position Masterlist</h3>
+<hr />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+
+                        <td>
+                            <a href="@Url.Action("Edit","Position", new { area = "", Id = item.Id})">Edit</a>
+                            <a href="@Url.Action("DeleteRecord","Position", new { area = "", Id = item.Id})">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a href=@Url.Action("InsertRecord", "Position", new { area=""}) class="btn btn-default"> Add Record</a>
+</div>
