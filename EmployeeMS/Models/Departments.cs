@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EmployeeMS.Models
 {
@@ -33,6 +34,12 @@ namespace EmployeeMS.Models
 
             con.Close();
             return department;
+        }
+
+        public SelectList ListOfDepartment()
+        {
+            var list = new SelectList(GetAllRecordDept(), "Id", "name");
+            return list;
         }
 
         public void InsertDept(Departments dept)
